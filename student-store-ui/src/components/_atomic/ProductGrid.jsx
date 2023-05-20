@@ -5,9 +5,9 @@ import ProductCard from "./ProductCard";
 
 export default function ProductGrid(props) {
 
-  const productElements = props.products.map(productObj => { 
+  const productElements = props.products ?  props.products.map(productObj => { 
     <ProductCard showDescription='false' product={productObj} /> 
-  })
+  }) : []
 
   return (
     <div className="product-grid">
