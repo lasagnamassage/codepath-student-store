@@ -1,4 +1,6 @@
 import * as React from "react"
+import Hero from "../_atomic/Hero";
+import ProductGrid from "../_atomic/ProductGrid";
 import "./Home.css"
 
 export default function Home(props) {

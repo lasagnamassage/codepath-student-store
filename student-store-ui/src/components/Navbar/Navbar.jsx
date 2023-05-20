@@ -1,5 +1,5 @@
 import * as React from "react"
-import Logo from '../_atomic/Logo/Logo'
+import Logo from '../_atomic/Logo'
 import "./Navbar.css"
 
 export default function Navbar() {
