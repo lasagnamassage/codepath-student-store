@@ -1,0 +1,19 @@
+.sidebar {
+    background: #FF6F59;
+    height: 90vh;
+    transition: 0.25s ease-in;
+}
+
+.toggle-button {
+    background: transparent;
+    border: 3px solid;
+    width: 85%;
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    transition: 0.25s ease-in;
+}
+
+.toggle-button:hover {
+    cursor: pointer;
+}

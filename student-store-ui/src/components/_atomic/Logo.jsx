@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <div className="logo">
         <Link style={{ color: "white", textDecoration: "None", fontSize: "28px", paddingLeft: '1%'}} to="/">
-        Store
+        ashauns-store.com
         </Link>
     </div>
   )

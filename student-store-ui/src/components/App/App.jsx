@@ -9,9 +9,9 @@ export default function App() {
   return (
     <div className="app">
       <BrowserRouter>
+        <Navbar />
         <main>
           {/* YOUR CODE HERE! */}
-          <Navbar />
           <Sidebar />
           <Home />
         </main>
