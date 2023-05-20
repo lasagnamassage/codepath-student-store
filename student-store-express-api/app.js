@@ -9,6 +9,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/store', async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     res.status(200);
     const options = {
         root: path.join(__dirname)
@@ -23,6 +24,7 @@ app.get('/store', async (req, res) => {
 })
 
 app.get('/store/:prodictId', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     fs.readFile('./data/db.json', 'utf8', (error, data) => {
         if(error){
             // console.log(error);

@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 
 export default function ShoppingCart(props) {
 
-    let total = 0;
+    function generateSubtotal() {
+        let total = 0;
+    }
 
     function generateItemElems() {
         const elems = props.shoppingCart.map( (item) => {
@@ -18,6 +20,7 @@ export default function ShoppingCart(props) {
 
     return (
         <div className="shopping-cart">
+            Shopping Cart
             {/* {generateItemElems()} */}
         </div>
     )
