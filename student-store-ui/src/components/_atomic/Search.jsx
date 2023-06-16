@@ -11,7 +11,9 @@ export default function Search({ formData, setFormData, products, setProducts, o
 
   function search(event) {
     event.preventDefault();
-    setProducts(originalProducts.filter(product => product.name.includes(formData)))
+    console.log("original products")
+    setProducts(originalProducts.filter(product => product.name.toLowerCase().includes(formData)))
+    console.log("products");
   }
   
   return (
