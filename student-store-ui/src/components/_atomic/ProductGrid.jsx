@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import ProductCard from "./ProductCard";
 
 
-export default function ProductGrid(props) {
+export default function ProductGrid({ products }) {
 
-  const productElements = props.products ?  props.products.map(productObj => { 
-    return <ProductCard showDescription={false} product={productObj} /> 
+  const productElements = products ?  products.map(productObj => { 
+    return <ProductCard product={productObj} key={productObj.id} /> 
   }) : []
-
-  console.log(productElements);
 
   return (
     <div className="product-grid" style={{ 
@@ -24,6 +22,7 @@ export default function ProductGrid(props) {
 
 ProductGrid.propTypes = {
   products: PropTypes.array,
+  productId: PropTypes.any,
   handleAddItemToCart: PropTypes.func,
   handleRemoveItemToCart: PropTypes.func
 }

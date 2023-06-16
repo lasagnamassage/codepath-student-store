@@ -6,40 +6,41 @@ import PropTypes from 'prop-types';
 import NotFound from '../NotFound/NotFound'
 
 
-export default function ProductDetail(props) {
+export default function ProductDetail() {
 
-    const [product, setProduct] = useState();
-    const { productId } = useParams();
+    const { id } = useParams();
+    const [product, setProduct] = useState({});
+
 
     useEffect(() => {
-        axios.get(`/store/${productId}`)
-        .then((response) => {
-            setProduct(response)
-        })
-        .catch((error) => {
-            if (error.response && error.response.status == 404) {
-                setProduct(-1); // sentinel value
-            }
-        })
+        axios.get(`https://codepath-store-api.herokuapp.com/store/${id}`)
+            .then( response => setProduct(response.data.product))
+    }, [])
 
-    }, []);
-
-    function renderDetails() {
-        if (!product) { return <h1 className="loading">Loading...</h1>  } // undefined is "falsey"
-        if (product === -1) {
-            return <NotFound />
-        }
-        else {
-            return (
-                <div className="product-detail"></div>
-            )
-        }
-    }
+    // function renderDetails() {
+    //     if (!product) { return <h1 className="loading">Loading...</h1>  } // undefined is "falsey"
+    //     if (product === -1) {
+    //         return <NotFound />
+    //     }
+    //     else {
+    //         return (
+    //             <>
+    //                 <img style={{ width: '200px' }} src={product.image} />
+    //                 <p>{product.description}</p>
+    //             </>
+    //         )
+    //     }
+    // }
     
-    return ( renderDetails() )
+    return ( 
+    <>
+        <img style={{ width: '200px' }} src={product.image} />
+        <p>{product.description}</p>
+    </> 
+    )
 }
 
-ProductCard.propTypes = {
+ProductDetail.propTypes = {
     handleAddItemToCart: PropTypes.func,
     handleRemoveItemToCart: PropTypes.func
 }
