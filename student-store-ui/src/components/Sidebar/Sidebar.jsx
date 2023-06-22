@@ -4,7 +4,7 @@ import "./Sidebar.css"
 import ShoppingCart from "../_atomic/ShoppingCart";
 import CheckoutForm from "../_atomic/CheckoutForm";
 
-export default function Sidebar() {
+export default function Sidebar({shoppingCart}) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleOnToggle() {
@@ -15,6 +15,14 @@ export default function Sidebar() {
     if (isOpen) {
       return (
         <>
+          {
+            shoppingCart.map( (item) => {
+              <div className="cart-product">
+                  <div className="cart-product-name">{item.id}</div> 
+                  <div className="cart-product-quantity">{item.quantity}</div>
+              </div>
+          } )
+          }
           <ShoppingCart />
           <CheckoutForm />
         </>

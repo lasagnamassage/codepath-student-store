@@ -5,6 +5,10 @@ import { CurrencyFormatter } from "../../helpers";
 
 
 export default function ProductCard(props) {
+
+  console.log("PROPS BELOW")
+  console.log(props)
+
   return (
     <div className="product-card" style={{ 
       width: "20%", 
@@ -14,7 +18,7 @@ export default function ProductCard(props) {
       borderRadius: "5px",
       marginBottom: "5%"}}>
         <section className="media">
-            <Link to={"/products/" + props.productId}>
+            <Link to={"/products/" + props.product.id}>
                 <img src={props.product.image} alt="product image" style={{ width: "100%", height: "200px"}}/>
             </Link>
         </section>

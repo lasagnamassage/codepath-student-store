@@ -1,39 +1,25 @@
 const express = require('express')
 const app = express()
-const fs = require('fs');
-const path = require('path');
+const cors = require('cors')
+const db = require('./data/db.json')
+
+let productData = [...db.products];
+
+app.use(cors())
+app.use(express.json())
+
 
 app.get('/', (req, res) => {
     res.status(200);
-    res.send({ping: "pong"})
+    res.send(productData)
 })
 
-app.get('/store', async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.status(200);
-    const options = {
-        root: path.join(__dirname)
-    };
- 
-    res.sendFile('./data/db.json', options, (error) => {
-        if(error){
-            console.log(error);
-            return;
-        }
-    })
-})
-
-app.get('/store/:prodictId', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    fs.readFile('./data/db.json', 'utf8', (error, data) => {
-        if(error){
-            // console.log(error);
-            res.send(error);
-            return;
-        }
-        // console.log(JSON.parse(data));
-        res.send(data)
-    })
+app.post('/products/:id', (req, res) => {
+    // console.log(req.body)
+    // res.send(req.body)
+    let id = (typeof req.body.id !== 'number') ? parseInt(req.body.id) : req.body.id;
+    let filteredData = productData.filter( (product) => product.id === id)
+    res.send(filteredData)
 })
 
 module.exports = app;

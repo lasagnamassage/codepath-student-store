@@ -13,9 +13,9 @@ export default function Home() {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/store`)
+    axios.get(`http://localhost:3001/`)
       .then((response) => {
-          setProducts(response.data.products);
+          setProducts(response.data);
       })
       .catch((error) => {
         console.log(error);
