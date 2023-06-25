@@ -19,3 +19,15 @@
 .toggle-button:hover {
     cursor: pointer;
 }
+
+.notice {
+    text-align: center;
+    animation-name: appear;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+}
+
+@keyframes appear {
+    from { opacity: 0;}
+    to {opacity: 1}
+}

@@ -1,32 +1,26 @@
-import * as React from "react"
-import Hero from "../_atomic/Hero";
-import { useEffect, useState } from "react";
+import * as React from "react";
 import ProductGrid from "../_atomic/ProductGrid";
-import axios from 'axios';
-import "./Home.css"
+import "./Home.css";
+import image from "../../assets/hero.gif";
 
-export default function Home() {
-  let handleAddItemToCart;
-  let handleRemoveItemToCart;
-  const [products, setProducts] = useState();
-
-
-
-  useEffect(() => {
-    axios.get(`http://localhost:3001/`)
-      .then((response) => {
-          setProducts(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
-  }, []);
-  
+export default function Home({ setShoppingCart, shoppingCart, products }) {
   return (
-    <div className="home" style={{ overflow: "scroll"}}>
-      <Hero />
-      <ProductGrid products={products}/>
+    <div className="home" style={{ overflow: "scroll" }}>
+      <div className="hero" style={{ textAlign: "center" }}>
+        <span
+          className="intro"
+          style={{ fontSize: "50px", fontFamily: "monaco" }}
+        >
+          Welcome, shopper
+        </span>
+        <br />
+        <img className="hero-img" alt="logo" src={image} />
+      </div>
+      <ProductGrid
+        products={products}
+        setShoppingCart={setShoppingCart}
+        shoppingCart={shoppingCart}
+      />
     </div>
-  )
+  );
 }
